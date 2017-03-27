@@ -1,4 +1,3 @@
-# -*- coding:utf-8 -*-
 
 import re
 import urllib.request
@@ -14,7 +13,7 @@ def get_jpg_url():
     html = urllib.request.urlopen('http://cn.bing.com/').read().decode('utf-8')
     jpg_url = re.findall(r'([\w\/_-]+?.jpg)',html)[0]
     print(jpg_url)
-    jpg_name = re.search(r'[\w_-]+?.jpg',jpg_url)[0]
+    jpg_name = re.search(r'[\w_-]+?.jpg',jpg_url).group(0)
     print(jpg_name)
     return (jpg_url,jpg_name)
 
