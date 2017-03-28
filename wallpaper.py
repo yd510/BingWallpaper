@@ -1,3 +1,13 @@
+# coding=utf-8
+# -*- conding:utf-8 -*-
+
+'''
+https://www.python.org/dev/peps/pep-0263/
+
+More precisely, the first or second line must match the following regular expression:
+
+^[ \t\v]*#.*?coding[:=][ \t]*([-_.a-zA-Z0-9]+)
+'''
 
 import re
 import urllib.request
@@ -40,9 +50,8 @@ if __name__ == '__main__':
     while(True):
         print('In while loop...')
         jpg_url,jpg_name=get_jpg_url()
-        if os.path.exists(jpg_name):
-            print('Sleep for 12 hours!')
-            time.sleep(60*60*12)
-            continue
-        get_jpg_file(jpg_url)
-        set_wallpaper(jpg_name)
+        if not os.path.exists(jpg_name):
+            get_jpg_file(jpg_url)
+            set_wallpaper(jpg_name)
+        print('Sleep for 12 hours!')
+        time.sleep(60*60*12)
