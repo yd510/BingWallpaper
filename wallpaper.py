@@ -43,6 +43,7 @@ def set_wallpaper(jpg_name):
     print('Done!')
     print('Setting wallpaper...')
     win32gui.SystemParametersInfo(win32con.SPI_SETDESKWALLPAPER,bmp_name,0)
+    os.remove(bmp_name)
     print('Done!')
 
 
