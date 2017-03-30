@@ -44,6 +44,10 @@ def set_wallpaper(jpg_name):
     print('Setting wallpaper...')
     win32gui.SystemParametersInfo(win32con.SPI_SETDESKWALLPAPER,bmp_name,0)
     os.remove(bmp_name)
+    oem_path=r"C:\Windows\System32\oobe\info\backgrounds"
+    if os.path.exists(oem_path):
+        b_img = img.resize((1366,768))
+        b_img.save(oem_path+r"\backgroundDefault.jpg")
     print('Done!')
 
 
