@@ -2,14 +2,15 @@
 
 Collecting the background image of cn.bing.com and set it as desktop wallpaper.
 
-The code is compatible to ~~`3.6.1`~~ `3.5.3`.
+The code is compatible to ~~`3.6.1`~~ `3.5.3` and works only in `win7`.
+Now it could set the background of login screen as well. However, due to the limits of windows, this feature doesn't work perfectly.
 
 
 ## Requirements
 
 * **PIL** The orignal [PIL](http://www.pythonware.com/products/pil/) doesn't suport python `3.x`. Use [Pillow](https://pypi.python.org/pypi/Pillow) instead.
 * [**pywin32**](https://sourceforge.net/projects/pywin32/) provides `win32gui` and `win32con`.
-
+* The feature of setting login screen only works when related regkeys are set properly. And it will fail when the size of jpg is still bigger than 250KB after resized.
 
 ## Others
 
@@ -23,3 +24,4 @@ The code is compatible to ~~`3.6.1`~~ `3.5.3`.
 ## Ref
 * http://blog.csdn.net/u011584748/article/details/51377915
 * http://blog.csdn.net/pipisorry/article/details/50620122
+* http://jingyan.baidu.com/article/da1091fb2c1ffc027949d661.html
