@@ -45,9 +45,15 @@ def set_wallpaper(jpg_name):
     win32gui.SystemParametersInfo(win32con.SPI_SETDESKWALLPAPER,bmp_name,0)
     os.remove(bmp_name)
     oem_path=r"C:\Windows\System32\oobe\info\backgrounds"
-    if os.path.exists(oem_path):
-        b_img = img.resize((1366,768))
+    size = ((1600,900),(1366,768),(1280,800),(1280,720),(1024,576),(854,480))
+    i=0
+    while os.path.exists(oem_path):
+        print("Resizing img to size {size}...".format(size=size[i]))
+        b_img = img.resize(size[i])
         b_img.save(oem_path+r"\backgroundDefault.jpg")
+        if os.path.getsize(oem_path+r"\backgroundDefault.jpg")<=256000 or i==5:
+            break
+        i+=1
     print('Done!')
 
 
