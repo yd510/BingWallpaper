@@ -20,7 +20,14 @@ import win32con
 
 def get_jpg_url():
     print('Parsing html...')
-    html = urllib.request.urlopen('http://cn.bing.com/').read().decode('utf-8')
+    while True :
+        try:
+            html = urllib.request.urlopen('http://cn.bing.com/').read().decode('utf-8')
+            if html != None:
+                break
+        except Exception as e:
+            print("Exception occured during urlopen. Retrying...")
+            continue
     jpg_url = re.findall(r'([\w\/_-]+?.jpg)',html)[0]
     print(jpg_url)
     jpg_name = re.search(r'[\w_-]+?.jpg',jpg_url).group(0)
@@ -29,7 +36,9 @@ def get_jpg_url():
 
 
 def get_jpg_file(jpg_url):
-    jpg_url = 'http://cn.bing.com' + jpg_url
+    if "com" not in jpg_url:
+        jpg_url = 'com/az/hprichbg/rb' + jpg_url
+    jpg_url = 'http://cn.bing.' + jpg_url
     print('Downloading %s' % jpg_url)
     urllib.request.urlretrieve(jpg_url,jpg_name)
     print('Done!')
